@@ -19,8 +19,8 @@ const Header = () => {
         <Link href='/about'>
           <Navbar.Link active={path === '/about'} as={'div'}>About</Navbar.Link>
         </Link>
-        <Link href='/projects'>
-          <Navbar.Link active={path === '/projects'} as={'div'}>Projects</Navbar.Link>
+        <Link href='/sign-in'>
+          <Navbar.Link active={path === '/sign-in'} as={'div'}>Sign-In</Navbar.Link>
         </Link>
         <Link href='/dashboard'>
           <Navbar.Link active={path === '/dashboard'} as={'div'}>Dashboard</Navbar.Link>
