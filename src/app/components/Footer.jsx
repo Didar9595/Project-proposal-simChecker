@@ -37,7 +37,7 @@ export default function FooterComp() {
         </div>
         <Footer.Divider />
         <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Copyright href="#" by="Didar Abbas" year={2025} className="text-black font-bold"/>
+          <Footer.Copyright href="#" by="Didar Abbas & team" year={2025} className="text-black font-bold"/>
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon href="#" icon={BsFacebook} className="text-black" />
             <Footer.Icon href="#" icon={BsInstagram} className="text-black"/>
