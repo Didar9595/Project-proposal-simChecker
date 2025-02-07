@@ -15,6 +15,7 @@ export default function page() {
       const router = useRouter()
 
       const handleSubmit=async()=>{
+        setError('')
         console.log(form)
         try {
             const res = await fetch('/api/user/login', {
@@ -42,7 +43,7 @@ export default function page() {
 
 
     return (
-        <div className='p-14 flex items-center justify-center'>
+        <div className='p-14 flex items-center justify-center flex-col gap-5'>
             {
                     success && (
                       <div>
