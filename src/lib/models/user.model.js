@@ -15,6 +15,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
+    dept:{
+        type:String,
+        required:true,
+        default:"computer"
+    },
     isAdmin:{
         type:Boolean,
         default:false,
