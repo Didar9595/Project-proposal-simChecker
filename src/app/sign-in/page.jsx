@@ -30,6 +30,8 @@ export default function page() {
               return
             }
             if (res.ok) {
+              localStorage.setItem('token',data.token)
+              console.log(localStorage.getItem('token'))
               setSuccess("User Logged-in successfully!");
               setTimeout(() => {
                 router.push('/');
@@ -64,8 +66,8 @@ export default function page() {
                 <div className='w-[100%] flex flex-row justify-center items-center' >
                 <TextInput type={pass?'password':'text'} placeholder='Enter your Password...' className='w-[72%]' required value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
                 <div className='bg-slate-200 p-3 hover:cursor-pointer rounded-md'  onClick={()=>setPass(!pass)}>{pass?<VscEyeClosed/>:<RxEyeOpen/>}</div>
-                </div>
-                <Button type='submit' gradientDuoTone='tealToLime' outline className='w-[30%] text-xl font-bold'>Login</Button>
+                </div> 
+                <Button type='submit' gradientDuoTone='tealToLime' outline className='w-[30%] text-xl font-bold'>Login </Button>
                 </form>
                 <div>
                     Don&apos;t have an account? <Link href='/sign-up' className='text-emerald-500 cursor-pointer'>Sign-up</Link>

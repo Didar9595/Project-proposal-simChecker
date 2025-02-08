@@ -16,6 +16,7 @@ const Header = () => {
         method: "GET",
       });
       if (res.ok) {
+        localStorage.removeItem('token');
         console.log("Successfully Logout")
         router.push('/sign-in')
       }

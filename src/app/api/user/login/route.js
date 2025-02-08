@@ -20,15 +20,11 @@ export const POST = async (req) => {
         //if erverything is fine then create a token
         const tokenData={
             id:user._id,
-            username:user.username,
             email:user.email,
-            dept:user.dept,
-            isAdmin:user.isAdmin
         }
         const token=jwt.sign(tokenData,process.env.JWT_SECRET_KEY,{expiresIn:"1h"})
 
-        const response=new Response(JSON.stringify({message:"Login Successful"}),{status:200})
-        response.headers.append("Set-Cookie", `token=${token}; HttpOnly; Path=/; Max-Age=3600`);
+        const response=new Response(JSON.stringify({message:"Login Successful",token}),{status:200})
         return response
     } catch (error) {
         return new Response(JSON.stringify({ message: "Error Login the user", error: error.message }), { status: 500 });
