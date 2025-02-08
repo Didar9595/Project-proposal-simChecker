@@ -8,19 +8,26 @@ import { PiSignOutBold } from "react-icons/pi";
 import { useUserContext } from "../auth/AuthContext"
 
 
+function SearchParamsHandler({ setTab }) {
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const tabFromUrl = searchParams.get("tab");
+        if (tabFromUrl) {
+            setTab(tabFromUrl);
+        }
+    }, [searchParams]);
+
+    return null;
+}
+
+
 export default function DashSideBar() {
     const [tab, setTab] = useState('')
     const searchParams = useSearchParams()
     const {user,isSignedIn}=useUserContext()
     const router=useRouter()
-    useEffect(() => {
-        const urlParams = new URLSearchParams(searchParams);
-        const tabFromUrl = urlParams.get('tab');
-        if (tabFromUrl) {
-            setTab(tabFromUrl)
-        }
-    }, [searchParams])
-
+    
     const handleLogout=async()=>{
         try {
             const res = await fetch('/api/user/logout', {
@@ -48,8 +55,8 @@ export default function DashSideBar() {
             <Sidebar.Items>
                 <Sidebar.ItemGroup className="flex flex-col gap-3">
                     <Link href='/dashboard?tab=profile'>
-                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.isAdmin?'Admin':'User'} labelColor='dark'>
-                            Profile {isSignedIn}
+                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.user?.isAdmin?'Admin':'User'} labelColor='dark'>
+                            Profile
                         </Sidebar.Item>
                     </Link>
                     <Sidebar.Item className='cursor-pointer'  icon={PiSignOutBold} onClick={handleLogout}>

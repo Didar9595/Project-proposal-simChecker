@@ -19,7 +19,7 @@ export default function page() {
   },[searchParams])
   return (
     <div className='min-h-screen flex flex-col md:flex-row gap-1'>
-      <div className='md:w-[25%]'>
+      <div className='md:w-[20%]'>
         <DashSideBar/>
       </div>
       {/* Tabs */}
