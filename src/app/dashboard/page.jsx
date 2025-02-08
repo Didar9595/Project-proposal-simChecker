@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react'
 import { useSearchParams } from 'next/navigation'
 import DashProfile from '../components/DashProfile'
 import { useRouter } from 'next/navigation'
-import DashSideBar from '../components/DashSidebar'
+import DashSideBar from '../components/DashSideBar'
 
 export default function page() {
   const searchParams=useSearchParams()
