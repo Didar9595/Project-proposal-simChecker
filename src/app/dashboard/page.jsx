@@ -5,7 +5,7 @@ import DashSidebar from '../components/DashSidebar'
 import DashProfile from '../components/DashProfile'
 import { useRouter } from 'next/navigation'
 
-export default function Dashboard() {
+export default function page() {
   const searchParams=useSearchParams()
   const [tab,setTab]=useState('')
  const router=useRouter()
