@@ -33,7 +33,7 @@ export default function page() {
       <Suspense fallback={<p>Loading...</p>}>
                 <SearchParamsHandler setTab={setTab} />
       </Suspense>
-      <div>
+      <div className='w-[100%]'>
       {/* Tabs */}
       {tab==='profile' && <DashProfile/>}
       </div>
