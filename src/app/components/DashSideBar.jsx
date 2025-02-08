@@ -1,6 +1,6 @@
 'use client'
 import { Sidebar } from "flowbite-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState ,Suspense} from "react"
 import { useSearchParams,useRouter } from "next/navigation"
 import Link from "next/link"
 import { ImProfile } from "react-icons/im";
@@ -24,7 +24,6 @@ function SearchParamsHandler({ setTab }) {
 
 export default function DashSideBar() {
     const [tab, setTab] = useState('')
-    const searchParams = useSearchParams()
     const {user,isSignedIn}=useUserContext()
     const router=useRouter()
     
@@ -52,6 +51,9 @@ export default function DashSideBar() {
     
     return (
         <Sidebar className="w-full">
+             <Suspense fallback={<p>Loading...</p>}>
+                <SearchParamsHandler setTab={setTab} />
+            </Suspense>
             <Sidebar.Items>
                 <Sidebar.ItemGroup className="flex flex-col gap-3">
                     <Link href='/dashboard?tab=profile'>
