@@ -6,8 +6,9 @@ export const POST = async (req) => {
     try {
         await connect()
         const data = await req.json();
+        console.log(data)
         const existingUser = await User.findOne({
-            $or: [{ username: data.username }, { email: data.email }],
+            $or: [{ username: data.username }, { email: data.email },{UIN:data.UIN}],
         });
 
         if (existingUser) {
@@ -22,7 +23,7 @@ export const POST = async (req) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(data.password, salt);
 
-        const newUser = await User.create({ username: data.username, email: data.email, password: hashedPassword,dept:data.dept, isAdmin: false })
+        const newUser = await User.create({ username: data.username, email: data.email, password: hashedPassword,dept:data.dept,UIN:data.UIN, isAdmin: false })
         await newUser.save()
         return new Response(JSON.stringify(newUser), { status: 200 })
     } catch (error) {

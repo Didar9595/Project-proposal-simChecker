@@ -59,12 +59,12 @@ export default function page() {
                     )
                   }
             <div className='rounded-md py-8 px-3 bg-white shadow-md flex flex-col gap-5 items-center justify-center w-[92%] lg:w-[40%]'>
-                <img src="logo.png" alt="logo Image" width={150} className='rounded-md' />
+                <img src="logo.png" alt="logo Image" width={150} className='rounded-lg' />
                 {error && <div className='text-red-500 p-2 rounded-md bg-slate-200'>{error}</div>}
                 <form action={handleSubmit} className='flex flex-col gap-5 w-[100%] items-center justify-center'>
-                <TextInput type='email' placeholder='Enter your College Email ID...' className='w-[80%]' required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
+                <TextInput type='email' placeholder='Enter your College Email ID...' className='w-[90%]' required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                 <div className='w-[100%] flex flex-row justify-center items-center' >
-                <TextInput type={pass?'password':'text'} placeholder='Enter your Password...' className='w-[72%]' required value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
+                <TextInput type={pass?'password':'text'} placeholder='Enter your Password...' className='w-[82%]' required value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} />
                 <div className='bg-slate-200 p-3 hover:cursor-pointer rounded-md'  onClick={()=>setPass(!pass)}>{pass?<VscEyeClosed/>:<RxEyeOpen/>}</div>
                 </div> 
                 <Button type='submit' gradientDuoTone='tealToLime' outline className='w-[30%] text-xl font-bold'>Login </Button>

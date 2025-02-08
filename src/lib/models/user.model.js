@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const userSchema=new mongoose.Schema({
     username:{
         type:String,
@@ -19,6 +20,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
         default:"computer"
+    },
+    UIN:{
+        type:String,
+        required:true,
+        unique:true
     },
     isAdmin:{
         type:Boolean,

@@ -9,7 +9,7 @@ export default function FooterComp() {
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div className="my-2">
-            <Footer.Brand src="Logo.png" alt="Logo" className="h-[10rem] rounded-lg" />
+            <Footer.Brand src="logo.png" alt="Logo" className="h-[10rem] rounded-lg" />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div className="">

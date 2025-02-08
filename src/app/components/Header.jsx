@@ -4,11 +4,12 @@ import Link from "next/link"
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation"
+import { useUserContext } from "../auth/AuthContext";
 
 const Header = () => {
   const router = useRouter()
   const path = usePathname();
-  
+  const {user,isSignedIn}=useUserContext()
 
   const handleLogout = async () => {
     try {
@@ -18,7 +19,7 @@ const Header = () => {
       if (res.ok) {
         localStorage.removeItem('token');
         console.log("Successfully Logout")
-        router.push('/sign-in')
+        router.push('/')
       }
       else {
         console.log("Difficulty in Logout")
@@ -33,21 +34,30 @@ const Header = () => {
   return (
     <Navbar className="bg-emerald-100 h-[fit-content] ">
       <Link href='/' className="font-bold text-lg sm:text-xl dark:text-white w-[27%] sm:w-[20%] md:w-[8%]">
-        <img src="./Logo.png" alt="Logo Image" className="rounded-lg" />
+        <img src="./logo.png" alt="Logo Image" className="rounded-lg" />
       </Link>
+      {
+        isSignedIn && <img src="./profile.jpg" alt="" width={70} className="rounded-full"/>
+      }
       <Navbar.Toggle className="bg-gray-100" />
       <Navbar.Collapse>
         <Link href='/'>
           <Navbar.Link active={path === '/'} as={'div'}>Home</Navbar.Link>
         </Link>
-        <Link href='/sign-in'>
-          <Navbar.Link active={path === '/sign-in'} as={'div'}>Sign-In</Navbar.Link>
-        </Link>
         <Link href='/dashboard'>
           <Navbar.Link active={path === '/dashboard'} as={'div'}>Dashboard</Navbar.Link>
         </Link>
       </Navbar.Collapse>
-      <Button gradientDuoTone="tealToLime" outline className="hidden md:block" onClick={handleLogout}>Logout</Button>
+      {
+        isSignedIn?(
+          <Button gradientDuoTone="tealToLime" outline className="hidden md:block" onClick={handleLogout}>Logout</Button>
+        ):(
+        <Link href='/sign-in'>
+          <Button gradientDuoTone="tealToLime" outline>Sign-In</Button>
+        </Link>
+        )
+      }
+     
     </Navbar>
   )
 }

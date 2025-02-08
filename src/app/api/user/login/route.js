@@ -23,8 +23,8 @@ export const POST = async (req) => {
             email:user.email,
         }
         const token=jwt.sign(tokenData,process.env.JWT_SECRET_KEY,{expiresIn:"1h"})
-
         const response=new Response(JSON.stringify({message:"Login Successful",token}),{status:200})
+        response.headers.append("Set-Cookie", `token=${token}; HttpOnly; Path=/; Max-Age=3600`);
         return response
     } catch (error) {
         return new Response(JSON.stringify({ message: "Error Login the user", error: error.message }), { status: 500 });
