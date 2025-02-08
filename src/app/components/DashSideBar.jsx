@@ -7,7 +7,8 @@ import { ImProfile } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
 import { useUserContext } from "../auth/AuthContext"
 
-function page() {
+
+export default function DashSideBar() {
     const [tab, setTab] = useState('')
     const searchParams = useSearchParams()
     const {user,isSignedIn}=useUserContext()
@@ -41,6 +42,7 @@ function page() {
     if (!isSignedIn) {
         return null;
     }
+    
     return (
         <Sidebar className="w-full">
             <Sidebar.Items>
@@ -58,5 +60,3 @@ function page() {
         </Sidebar>
     )
 }
-
-export default page
