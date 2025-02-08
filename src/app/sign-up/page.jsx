@@ -74,7 +74,7 @@ export default function page() {
           </div>
         )
       }
-      <div className='rounded-md py-8 px-3 bg-white shadow-md flex flex-col gap-5 items-center justify-center w-[95%] md:w-[40%]'>
+      <div className='rounded-md py-8 px-3 bg-white shadow-md flex flex-col gap-5 items-center justify-center w-[95%] lg:w-[40%]'>
         <img src="logo.png" alt="logo Image" width={150} className='rounded-md' />
         {error && <div className='text-red-500 p-2 rounded-md bg-slate-200'>{error}</div>}
         <form action={handleClick} className='flex flex-col gap-5 w-[100%] items-center justify-center'>
