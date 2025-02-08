@@ -1,9 +1,9 @@
 'use client'
 import {useState,useEffect} from 'react'
 import { useSearchParams } from 'next/navigation'
-import DashSidebar from '../components/DashSidebar'
 import DashProfile from '../components/DashProfile'
 import { useRouter } from 'next/navigation'
+import DashSideBar from '../components/DashSidebar'
 
 export default function page() {
   const searchParams=useSearchParams()
@@ -20,7 +20,7 @@ export default function page() {
   return (
     <div className='min-h-screen flex flex-col md:flex-row gap-1'>
       <div className='md:w-[25%]'>
-        <DashSidebar/>
+        <DashSideBar/>
       </div>
       {/* Tabs */}
       {tab==='profile' && <DashProfile/>}
