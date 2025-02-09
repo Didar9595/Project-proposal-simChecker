@@ -31,6 +31,7 @@ export default function page() {
             }
             if (res.ok) {
               localStorage.setItem('token',data.token)
+              location.reload()
               console.log(localStorage.getItem('token'))
               setSuccess("User Logged-in successfully!");
               setTimeout(() => {
@@ -44,7 +45,7 @@ export default function page() {
 
 
     return (
-        <div className='p-14 flex items-center justify-center flex-col gap-5'>
+        <div className='px-2 md:px-8 py-14 flex items-center justify-center flex-col gap-5'>
             {
                     success && (
                       <div>
@@ -58,9 +59,11 @@ export default function page() {
                       </div>
                     )
                   }
-            <div className='rounded-md py-8 px-3 bg-white shadow-md flex flex-col gap-5 items-center justify-center w-[92%] lg:w-[40%]'>
-                <img src="logo.png" alt="logo Image" width={150} className='rounded-lg' />
+            <div className='rounded-md py-4 px-2 bg-white shadow-md flex flex-col gap-5 items-center justify-center w-[92%] md:w-[40%]'>
+                <img src="logo.png" alt="logo Image" width={150} className='rounded-lg mix-blend-multiply'  />
+                <h1 className='font-bold text-xl text-center border-b-2'>Student Login</h1>
                 {error && <div className='text-red-500 p-2 rounded-md bg-slate-200'>{error}</div>}
+                
                 <form action={handleSubmit} className='flex flex-col gap-5 w-[100%] items-center justify-center'>
                 <TextInput type='email' placeholder='Enter your College Email ID...' className='w-[90%]' required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                 <div className='w-[100%] flex flex-row justify-center items-center' >
@@ -70,7 +73,12 @@ export default function page() {
                 <Button type='submit' gradientDuoTone='tealToLime' outline className='w-[30%] text-xl font-bold'>Login </Button>
                 </form>
                 <div>
+                <div>
                     Don&apos;t have an account? <Link href='/sign-up' className='text-emerald-500 cursor-pointer'>Sign-up</Link>
+                </div>
+                <div>
+                HoD Login? <Link href='/hod-login' className='text-emerald-500 cursor-pointer'>Switch</Link>
+                </div>
                 </div>
                 <div>&copy; 2025 Project Proposal Checker</div>
             </div>

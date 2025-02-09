@@ -19,6 +19,7 @@ const Header = () => {
       if (res.ok) {
         localStorage.removeItem('token');
         console.log("Successfully Logout")
+        location.reload()
         router.push('/')
       }
       else {
@@ -34,7 +35,7 @@ const Header = () => {
   return (
     <Navbar className="bg-emerald-100 h-[fit-content] ">
       <Link href='/' className="font-bold text-lg sm:text-xl dark:text-white w-[27%] sm:w-[20%] md:w-[8%]">
-        <img src="./logo.png" alt="Logo Image" className="rounded-lg" />
+        <img src="./logo.png" alt="Logo Image" className="rounded-lg w-[110%]"  />
       </Link>
       {
         isSignedIn && <img src="./profile.jpg" alt="" width={70} className="rounded-full"/>

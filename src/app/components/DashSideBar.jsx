@@ -35,6 +35,7 @@ export default function DashSideBar() {
             if (res.ok) {
               localStorage.removeItem('token');
               console.log("Successfully Logout")
+              location.reload()
               router.push('/sign-in')
             }
             else {
