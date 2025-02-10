@@ -2,7 +2,7 @@ export function middleware(req){
 
     const path=req.nextUrl.pathname
     let isPublicPath=false
-    if(path=='/sign-in'||path=='/sign-up'){
+    if(path=='/sign-in'||path=='/sign-up'||path=='/hod-login'){
         isPublicPath=true
     }
     const token = req.cookies.get('token')?.value || '';
@@ -19,6 +19,7 @@ export const config = {
     matcher: [
       '/dashboard(.*)',
       '/sign-in',
-      '/sign-up'
+      '/sign-up',
+      '/hod-login'
     ],
   };

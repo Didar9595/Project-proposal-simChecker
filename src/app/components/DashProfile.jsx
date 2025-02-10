@@ -15,7 +15,7 @@ export default function DashProfile() {
         </div>
         <div className='flex flex-col gap-3 justify-center'>
           <p className='font-medium text-normal'>Email ID: <span className='text-md font-light italic underline'>{user?.user?.email}</span></p>
-          <p className='font-medium text-normal'>UIN: <span className='text-md font-light'>{user?.user?.UIN}</span></p>
+          <p className='font-medium text-normal'>UIN: <span className='text-md font-light'>{user?.user?.isAdmin?user?.user?.UID:user?.user?.UIN}</span></p>
           <p className='font-medium text-normal'>Department: <span className='text-md font-light capitalize'>{user?.user?.dept}</span></p>
           <p className='font-medium text-normal'>Role: <span className='text-md font-light'>{user?.user?.isAdmin?'HoD':'Student'}</span></p>
         </div>

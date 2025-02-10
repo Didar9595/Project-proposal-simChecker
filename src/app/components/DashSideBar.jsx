@@ -58,7 +58,7 @@ export default function DashSideBar() {
             <Sidebar.Items>
                 <Sidebar.ItemGroup className="flex flex-col gap-3">
                     <Link href='/dashboard?tab=profile'>
-                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.user?.isAdmin?'Admin':'User'} labelColor='dark'>
+                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.user?.isAdmin?'HoD':'User'} labelColor='dark'>
                             Profile
                         </Sidebar.Item>
                     </Link>

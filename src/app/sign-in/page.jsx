@@ -31,12 +31,12 @@ export default function page() {
             }
             if (res.ok) {
               localStorage.setItem('token',data.token)
-              location.reload()
-              console.log(localStorage.getItem('token'))
               setSuccess("User Logged-in successfully!");
               setTimeout(() => {
                 router.push('/');
+                location.reload()
               }, 3000);
+              
             }
           } catch (error) {
             console.log(error)

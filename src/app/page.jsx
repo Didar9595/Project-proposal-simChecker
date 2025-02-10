@@ -11,6 +11,6 @@ export default function page() {
     setData(localStorage.getItem('token'))
   }
   return (
-    <div>{isSignedIn && <>Success</>}</div>
+    <div className='h-[70vh]'>Home Page</div>
   )
 }
