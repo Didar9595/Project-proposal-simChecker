@@ -1,12 +1,12 @@
 'use client'
 import { Sidebar } from "flowbite-react"
-import { useEffect, useState ,Suspense} from "react"
-import { useSearchParams,useRouter } from "next/navigation"
+import { useEffect, useState, Suspense } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ImProfile } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
 import { useUserContext } from "../auth/AuthContext"
-
+import { VscProject } from "react-icons/vsc";
 
 function SearchParamsHandler({ setTab }) {
     const searchParams = useSearchParams();
@@ -24,47 +24,59 @@ function SearchParamsHandler({ setTab }) {
 
 export default function DashSideBar() {
     const [tab, setTab] = useState('')
-    const {user,isSignedIn}=useUserContext()
-    const router=useRouter()
-    
-    const handleLogout=async()=>{
+    const { user, isSignedIn } = useUserContext()
+    const router = useRouter()
+
+    const handleLogout = async () => {
         try {
             const res = await fetch('/api/user/logout', {
-              method: "GET",
+                method: "GET",
             });
             if (res.ok) {
-              localStorage.removeItem('token');
-              console.log("Successfully Logout")
-              location.reload()
-              router.push('/sign-in')
+                localStorage.removeItem('token');
+                console.log("Successfully Logout")
+                location.reload()
+                router.push('/sign-in')
             }
             else {
-              console.log("Difficulty in Logout")
+                console.log("Difficulty in Logout")
             }
-          } catch (error) {
+        } catch (error) {
             console.log(error)
-          }
+        }
     }
 
     if (!isSignedIn) {
         return null;
     }
-    
+
     return (
         <Sidebar className="w-full">
-             <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p>Loading...</p>}>
                 <SearchParamsHandler setTab={setTab} />
             </Suspense>
             <Sidebar.Items>
                 <Sidebar.ItemGroup className="flex flex-col gap-3">
                     <Link href='/dashboard?tab=profile'>
-                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.user?.isAdmin?'HoD':'User'} labelColor='dark'>
+                        <Sidebar.Item active={tab === 'profile' || !tab} icon={ImProfile} as='div' label={user?.user?.isAdmin ? 'HoD' : 'User'} labelColor='dark'>
                             Profile
                         </Sidebar.Item>
                     </Link>
-                    <Sidebar.Item className='cursor-pointer'  icon={PiSignOutBold} onClick={handleLogout}>
-                            Logout
-                        </Sidebar.Item>
+                    {user?.user?.isAdmin && (
+                        <Link href='/dashboard?tab=addProjects'>
+                            <Sidebar.Item
+                                icon={VscProject}
+                                active={tab==='addProjects' || !tab}
+                                as='div'
+                            >
+                                Add Projects
+                            </Sidebar.Item>
+                        </Link>
+                    )}
+
+                    <Sidebar.Item className='cursor-pointer' icon={PiSignOutBold} onClick={handleLogout}>
+                        Logout
+                    </Sidebar.Item>
                 </Sidebar.ItemGroup>
             </Sidebar.Items>
         </Sidebar>

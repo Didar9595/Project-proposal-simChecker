@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation'
 import DashProfile from '../components/DashProfile'
 import { useRouter } from 'next/navigation'
 import DashSideBar from '../components/DashSideBar'
+import AddProjects from '../components/AddProjects'
 
 function SearchParamsHandler({ setTab }) {
   const searchParams = useSearchParams();
@@ -36,6 +37,7 @@ export default function page() {
       <div className='w-[100%]'>
       {/* Tabs */}
       {tab==='profile' && <DashProfile/>}
+      {tab=='addProjects' && <AddProjects/>}
       </div>
     </div>
   )
