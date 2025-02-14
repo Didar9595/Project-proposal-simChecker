@@ -30,6 +30,34 @@ export default function DashProfile() {
     }
     fetchProjects();
   }, [user])
+
+  const handleDelete = async() => {
+    if(!user?.user?.isAdmin){
+      console.log("You are not authorized")
+      return;
+    }
+    try {
+      const res = await fetch('/api/projects/delete', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          projectId: details._id,
+          dept:details.dept,
+          name:details.uploadedBy,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        console.log("Successfully deleted")
+        location.reload()
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='border-dashed border-2 border-lime-500 flex flex-col gap-5 items-center  w-[100%] min-h-screen'>
 
@@ -80,7 +108,7 @@ export default function DashProfile() {
                 <div className='italic font-bold'>Uploaded By: {details.uploadedBy}</div>
                 <div className='italic font-bold'>Threshold: {details.threshold}%</div>
                 </div>
-                <Button className='w-[30%]' gradientDuoTone='pinkToOrange' outline>Remove Data</Button>
+                <Button className='w-[30%]' gradientDuoTone='pinkToOrange' outline onClick={handleDelete}>Remove Data</Button>
                </div>
                 </div>
               )
