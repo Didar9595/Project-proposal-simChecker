@@ -7,6 +7,7 @@ import { ImProfile } from "react-icons/im";
 import { PiSignOutBold } from "react-icons/pi";
 import { useUserContext } from "../auth/AuthContext"
 import { VscProject } from "react-icons/vsc";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 function SearchParamsHandler({ setTab }) {
     const searchParams = useSearchParams();
@@ -73,6 +74,11 @@ export default function DashSideBar() {
                             </Sidebar.Item>
                         </Link>
                     )}
+                    <Link href='/dashboard?tab=groups'>
+                        <Sidebar.Item active={tab === 'groups' || !tab} icon={FaPeopleGroup} as='div'>
+                            Groups
+                        </Sidebar.Item>
+                    </Link>
 
                     <Sidebar.Item className='cursor-pointer' icon={PiSignOutBold} onClick={handleLogout}>
                         Logout

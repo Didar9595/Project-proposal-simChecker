@@ -30,6 +30,10 @@ const userSchema=new mongoose.Schema({
         type:Boolean,
         default:false,
     },
+    grpId:{
+        type:String,
+        default:"",
+    },
     
 },{timestamps:true});
 
