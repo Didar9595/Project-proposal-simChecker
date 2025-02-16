@@ -8,6 +8,7 @@ import { PiSignOutBold } from "react-icons/pi";
 import { useUserContext } from "../auth/AuthContext"
 import { VscProject } from "react-icons/vsc";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { BsPersonCheckFill } from "react-icons/bs";
 
 function SearchParamsHandler({ setTab }) {
     const searchParams = useSearchParams();
@@ -67,7 +68,7 @@ export default function DashSideBar() {
                         <Link href='/dashboard?tab=addProjects'>
                             <Sidebar.Item
                                 icon={VscProject}
-                                active={tab==='addProjects' || !tab}
+                                active={tab === 'addProjects'}
                                 as='div'
                             >
                                 Add Projects
@@ -75,10 +76,19 @@ export default function DashSideBar() {
                         </Link>
                     )}
                     <Link href='/dashboard?tab=groups'>
-                        <Sidebar.Item active={tab === 'groups' || !tab} icon={FaPeopleGroup} as='div'>
+                        <Sidebar.Item active={tab === 'groups'} icon={FaPeopleGroup} as='div'>
                             Groups
                         </Sidebar.Item>
                     </Link>
+                    {
+                        user?.user?.isAdmin && (
+                            <Link href='/dashboard?tab=students'>
+                                <Sidebar.Item active={tab === 'students'} icon={BsPersonCheckFill} as='div'>
+                                    Students
+                                </Sidebar.Item>
+                            </Link>
+                        )
+                    }
 
                     <Sidebar.Item className='cursor-pointer' icon={PiSignOutBold} onClick={handleLogout}>
                         Logout

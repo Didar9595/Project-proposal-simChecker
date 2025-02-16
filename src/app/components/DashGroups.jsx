@@ -105,7 +105,7 @@ export default function DashGroups() {
                     }
                     </div>
                   </Table.Cell>
-                  <Button gradientDuoTone='tealToLime' outline onClick={() => handleJoin(group._id)} disabled={user?.user?.grpId?true:false}>Join</Button>
+                  <Button gradientDuoTone='tealToLime' outline onClick={() => handleJoin(group._id)} disabled={(user?.user?.grpId || user?.user?.isAdmin)?true:false}>Join</Button>
                 </Table.Row>
               ))
             }
