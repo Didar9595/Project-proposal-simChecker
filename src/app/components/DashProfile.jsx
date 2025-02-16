@@ -165,7 +165,7 @@ export default function DashProfile() {
                 <Modal.Header />
                 <Modal.Body>
                   <div className="space-y-6">
-                    <div className='text-bold'>You cannot create another group. Because you are a pert of a group already</div>
+                    <div className='text-bold'>You cannot create another group. Because you are a part of a group already</div>
                   </div>
                 </Modal.Body>
               </Modal>
